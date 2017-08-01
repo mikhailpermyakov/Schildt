@@ -6,8 +6,8 @@ public class ShowBitsDemo {
         ShowBits i = new ShowBits(32);
         ShowBits li = new ShowBits(64);
 
-        System.out.println("123 в двоичном представлении: ");
-        b.show(123);
+        System.out.println("88 в двоичном представлении: ");
+        b.show(88);
 
         System.out.println("\n87987 в двоичном представлении: ");
         i.show(87987);
