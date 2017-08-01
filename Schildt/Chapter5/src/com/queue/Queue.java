@@ -1,4 +1,4 @@
-package com;
+package com.queue;
 
 class Queue {
     Object objects[];
