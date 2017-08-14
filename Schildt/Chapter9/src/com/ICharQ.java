@@ -1,11 +1,11 @@
 package com;
 
 public interface ICharQ {
-    void put(char ch);
+    void put(char ch) throws QueueFullException;
 
-    char get();
+    char get() throws QueueEmptyException;
 
-    ICharQ reset();
+    //ICharQ reset();
 
     static void qCopy(char[] sourceQ, char[] destQ){
         if (destQ.length < sourceQ.length ) {

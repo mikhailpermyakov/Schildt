@@ -3,10 +3,12 @@ package com;
 class FixedQueue implements ICharQ{
     private char q[];
     private int putloc, getloc;
+    private int size;
 
     public FixedQueue(int size){
         q = new char[size + 1];
         putloc = getloc = 0;
+        this.size = size;
     }
 
     @Override
@@ -28,15 +30,23 @@ class FixedQueue implements ICharQ{
         getloc++;
         return q[getloc];
     }
+
+    @Override
+    public FixedQueue reset() {
+        return new FixedQueue(size);
+    }
 }
 class CircularQueue implements ICharQ{
     private char q[];
     private int putloc, getloc;
+    private int size;
 
     public CircularQueue(int size) {
         q = new char[size + 1];
         putloc = getloc = 0;
+        this.size = size;
     }
+    @Override
     public void put(char ch){
         if(putloc+1 == getloc |((putloc == q.length - 1)&(getloc == 0))){
             System.out.println(" -  Queue is full");
@@ -47,6 +57,7 @@ class CircularQueue implements ICharQ{
         q[putloc] = ch;
 
     }
+    @Override
     public char get(){
         if(getloc == putloc){
             System.out.println(" - Queue is empty");
@@ -57,26 +68,36 @@ class CircularQueue implements ICharQ{
         if(getloc == q.length) getloc = 0;
         return q[getloc];
     }
+
+    @Override
+    public CircularQueue reset() {
+        return new CircularQueue(size);
+    }
 }
 class DynQueue implements ICharQ{
     private char q[];
     private int putloc, getloc;
+    private int size;
 
     public DynQueue(int size){
         q=new char[size + 1];
         putloc = getloc = 0;
+        this.size = size;
     }
+    @Override
     public void put(char ch){
         if(putloc == q.length-1){
             char t[] = new char[q.length * 2];
-            for (int i = 0; i < q.length; i++) {
-                t[i] = q[i];
-            }
+//            for (int i = 0; i < q.length; i++) {
+//                t[i] = q[i];
+//            }
+            ICharQ.qCopy(q, t);
             q = t;
         }
         putloc++;
         q[putloc] = ch;
     }
+    @Override
     public char get(){
         if (getloc == putloc){
             System.out.println(" - Queue is empty");
@@ -84,6 +105,11 @@ class DynQueue implements ICharQ{
         }
         getloc++;
         return q[getloc];
+    }
+
+    @Override
+    public DynQueue reset() {
+        return new DynQueue(size);
     }
 }
 public class IQDemo {
@@ -147,8 +173,7 @@ public class IQDemo {
             iQ.put((char)('A'+i));
             ch = iQ.get();
             System.out.print(ch);
-
         }
-    }
 
+    }
 }
