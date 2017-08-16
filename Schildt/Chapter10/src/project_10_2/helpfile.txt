@@ -1,0 +1,28 @@
+#if
+if(condition) operator;
+else operator;
+
+#switch
+switch(expression) {
+    case constant:
+       sequence of operators;
+       break;
+       //...
+}
+
+#for
+for(initialization; condition; iteration)operator;
+
+#while
+while(condition) operator;
+
+#do
+do {
+    operator;
+} while (condition);
+
+#break
+break; or break label;
+
+#contitue
+continue; or continue label;
