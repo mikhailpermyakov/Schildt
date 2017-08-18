@@ -11,7 +11,7 @@ class MyThread implements Runnable{
     public void run() {
         System.out.println("starting " + threadName + "...");
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 50; i++) {
                 Thread.sleep(400);
                 System.out.println("Counter value in " + threadName + " is " + i);
             }
@@ -54,7 +54,9 @@ public class UseThreads{
 
         ImprovedThread it = new ImprovedThread("child#1 of ImprovedThread");
 
-        for (int i = 0; i < 50; i++) {
+        ImprovedThread it1 = new ImprovedThread("child#2 of ImprovedThread");
+
+        do {
             System.out.print(".");
             try {
                 Thread.sleep(100);
@@ -62,7 +64,8 @@ public class UseThreads{
             } catch (InterruptedException exc){
                 System.out.println("Interruption of the main thread");
             }
-        }
+        } while(newThrd.isAlive()
+                );
         System.out.println("finishing the main thread");
     }
 }
