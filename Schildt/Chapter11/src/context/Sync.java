@@ -2,7 +2,7 @@ package context;
 
 class SumArray{
 
-    synchronized int sumArray(int nums[]){
+    /*synchronized*/ int sumArray(int nums[]){
         int sum = 0;
 
         for (int num : nums) {
