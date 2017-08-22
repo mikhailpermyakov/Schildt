@@ -11,6 +11,12 @@ class TickTock{
         }
         System.out.println("Tick ");
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         state = "ticked";
         notify();
 
@@ -29,7 +35,11 @@ class TickTock{
             return;
         }
         System.out.println("Tock");
-
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         state = "tocked";
         notify();
 
@@ -52,12 +62,12 @@ class MyThread1 implements Runnable{
     }
     public void run(){
         if(thread.getName().compareTo("Tick") == 0){
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 ttOb.tick(true);
             }
             ttOb.tick(false);
         }else {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 ttOb.tock(true);
             }
             ttOb.tock(false);
