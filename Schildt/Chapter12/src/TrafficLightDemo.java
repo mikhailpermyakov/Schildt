@@ -5,8 +5,8 @@ enum TrafficLightColor{
 class TrafficLightSimulator implements Runnable{
     private Thread thread;
     private TrafficLightColor tlc;
-    boolean stop = false;
-    boolean changed = false;
+    private boolean stop = false;
+    private boolean changed = false;
 
     TrafficLightSimulator(TrafficLightColor tlc){
         this.tlc = tlc;
@@ -42,7 +42,7 @@ class TrafficLightSimulator implements Runnable{
         }
     }
 
-    synchronized void changeColor(){
+    private synchronized void changeColor(){
         switch (tlc){
             case RED:
                 tlc = TrafficLightColor.GREEN;
